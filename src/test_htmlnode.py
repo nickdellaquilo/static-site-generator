@@ -133,3 +133,6 @@ class TestHTMLNode(unittest.TestCase):
         leaf2 = LeafNode(None, "plain")
         parent = ParentNode("div", [leaf1, leaf2])
         self.assertEqual(parent.to_html(), "<div><span>text</span>plain</div>")
+
+if __name__ == "__main__":
+    unittest.main()
