@@ -23,3 +23,13 @@ def split_nodes_delimiter(old_nodes: [TextNode], delimiter, text_type: TextType)
             else:
                 result.append(TextNode(part, text_type))
     return result
+
+def split_nodes_image(old_nodes: [TextNode]):
+    # Placeholder for future implementation
+    pass
+
+
+
+def split_nodes_link(old_nodes: [TextNode]):
+    # Placeholder for future implementation
+    pass
