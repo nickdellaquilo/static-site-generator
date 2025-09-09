@@ -1,4 +1,5 @@
 import re
+from textnode import TextNode, TextType
 
 def extract_markdown_images(text):
     '''

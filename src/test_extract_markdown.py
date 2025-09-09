@@ -26,6 +26,5 @@ class TestExtractMarkdown(unittest.TestCase):
         text = "First link [first](http://example.com/first) and second link [second](http://example.com/second)"
         self.assertEqual(extract_markdown_links(text), [("first", "http://example.com/first"), ("second", "http://example.com/second")])
 
-
 if __name__ == "__main__":
     unittest.main()
