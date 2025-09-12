@@ -8,9 +8,9 @@ from textnode import TextNode, TextType
 def main():
     # test = TextNode("Hello there", TextType.LINK, "https://github.com/nickdellaquilo/")
     # print(test)
-
-    transfer("static", "public")
-    generate_page("content/index.md", "template.html", "public/index.html")
+    # transfer("static", "public")
+    # generate_page("content/index.md", "template.html", "public/index.html")
+    generate_pages_recursive("content", "template.html", "public")
 
 def generate_page(from_path, template_path, dest_path):
     print(f"Generating page from {from_path}  to {dest_path} using template {template_path}")
@@ -24,6 +24,16 @@ def generate_page(from_path, template_path, dest_path):
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w", encoding="utf-8") as f:
         f.write(result)
+
+def generate_pages_recursive(dir_path_content, template_path, dir_path_dest):
+    for root, dirs, files in os.walk(dir_path_content):
+        for file in files:
+            if file.endswith(".md"):
+                generate_page(
+                    os.path.join(root, file),
+                    template_path,
+                    os.path.join(dir_path_dest, os.path.relpath(root, dir_path_content), file.replace(".md", ".html"))
+                )
 
 def transfer(src="static", dst="public"):
     if not os.path.exists(dst):
