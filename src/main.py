@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 
 from extract_markdown import extract_title
 from markdown_blocks import markdown_to_html_node
@@ -36,7 +37,8 @@ def generate_pages_recursive(dir_path_content, template_path, dir_path_dest, bas
                 generate_page(
                     os.path.join(root, file),
                     template_path,
-                    os.path.join(dir_path_dest, os.path.relpath(root, dir_path_content), file.replace(".md", ".html"))
+                    os.path.join(dir_path_dest, os.path.relpath(root, dir_path_content), file.replace(".md", ".html")),
+                    basepath
                 )
 
 def transfer(src="static", dst="public"):
